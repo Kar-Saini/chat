@@ -1,0 +1,6 @@
+getSession          : returns getServerSession(authOptions)
+getCurrentUser      : session (from getSession) -> finds in prisma session.user.email
+getConversationById : takes ConversationId as argument, searches conversation in prisma for id
+getConversations    : gets user (from getCurrentUser) -> returns array of conversation that has currentUser.id
+getMessages         : takes ConversationId as argument, searches for mesgs that has ConversationId
+getUsers

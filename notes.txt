@@ -1,0 +1,52 @@
+1. (site)
+   page.tsx : <Form /> 
+               - sginIn if LOGIN 
+               - /api/register if REGITER
+
+2. users
+   page.tsx : <EmptyState />
+   layout   : <SideBar>
+                  - <DesktopSideBar /> : maps useRoutes
+                     - <DesktopSideBarItem />
+
+               <UserList /> 
+                     --> getUsers(), maps
+                     
+                  - <Userbox />
+                     --> sends Post request to /api/conversations with conversationId
+                           (to either get existing conversation or create new conversation)
+                        
+
+3. conversations
+   page.tsx : <EmptyState />
+   layout   : <SideBar>
+                  - <DesktopSideBar /> : maps useRoutes
+                     - <DesktopSideBarItem />
+
+               <ConversationList /> getUsers(), maps
+                  - <ConversationBox />
+
+   [conversationId]
+      page.tsx
+         - <Header/>
+         - <Body/>
+               --> sends req to /api/[conversationId]/seen
+                   to update the seen 
+            - <MessageBox />
+         - <Form />
+          --> sends req to /api/messages 
+                   
+            - <InputBox/>
+
+
+******************************************
+PUSHER
+
+   app
+   -libs
+      -pusher.ts : export pusherServer
+
+   /api/messages
+      triggers 2 channel
+         messgae:new
+         conversation:updatey
